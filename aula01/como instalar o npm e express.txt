@@ -1,0 +1,10 @@
+
+no prompt
+
+
+npm ini
+
+npm install express --save
+
+
+depois tem que ter uma pasta node-modules
