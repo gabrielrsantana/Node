@@ -1,9 +1,10 @@
 //arquivo app.js principal
 //chamando os modulos
 var express = require("express");
-const app = express();
+
+const app = express();//cria uma app do express
 const port = 3000;
-var mongoose = require("mongoose");
+var mongoose = require("mongoose");//mongose para modelagem do banco
 
 //conectando no banco mongoDb na nuvem
 mongoose.connect("mongodb+srv://gabriel_rocha:gabriel_rocha@cluster0.uucs8.mongodb.net/vendas?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
@@ -15,26 +16,35 @@ const Produtos = mongoose.model("produtos", {
     codigoBarras: String
 });
 
-//use como motor de visuzalizacao é o ejs,mais simples que da "jade"
-//tem que estar antes das rotas
+//use como motor de vizualizacao é o ejs,mais simples que da "jade"
+//######## tem que estar antes das rotas,padrao
 app.set("view engine","ejs");
 app.set("views", __dirname ,"/views");
-//rotas
+//####################
+//rotas, criando principal /
 app.get("/", (req, res) => {
     res.send("pagina inicial");
 });
 
-//rota produtos,lista os produtos do mongoDB
+//############### rota produtos,lista os produtos do mongoDB
 app.get("/produtos",(req,res)=>{
+    // /produtos , o caminho rota pra pagina
     //produtos vai ser usado no produtos.ejs, dentro do forEach()
-    let produtos = Produtos.find({},(err,produtos)=>{
+    // o {} significa todos os produtos
+    //err = erro do servidor
+    let consulta = Produtos.find({},(err,elemento)=>{
+        console.log(consulta);//n precisa dessa linha
         if(err)
             return res.status(500).send("erro ao consulta produto");
-            res.render("produtos",{produtos:produtos});//2 produtos é o objetos
+            //rende a pagina produtos.ejs
+            //1 produtos é pro array
+            res.render("produtos",{produto_itens:elemento});//2 elemento é o array de objetos,como nome,valor e codbarra ,como no banco de dados;
     });
     
    
 });
+//################# Rota para cadastro de produtos
+//metodo POST para salvar os produtos no banco
 app.get("/cadastrarProdutos",(req,res)=>{
     res.render("formprodutos"); //nao precisa colocar extensao .ejs
 }); //cadastrarProdutos ,nome igual do form action""
@@ -52,7 +62,7 @@ app.post("/cadastrarProdutos",(req,res)=>{
     let produto = new Produtos();
     produto.nome = req.body.nome; //name é o campo input do formulario
     produto.vlUnit = req.body.valor;//body nao é do html,e body da requisicao
-    produto.codBarras = req.body.codBarras; //codBarra é  name do elemento
+    produto.codigoBarras = req.body.codBarras; //codBarra é  name do elemento
     produto.save((err) =>{
         if(err)
             return res.status(500).send("erro ao cadastrar"); //msg pro usuario
