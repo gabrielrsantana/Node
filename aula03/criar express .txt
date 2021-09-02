@@ -1,0 +1,4 @@
+npm ini
+npm install express --save
+
+e ve se instala mongoose
