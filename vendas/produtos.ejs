@@ -16,7 +16,6 @@
                 <div class="row mt-5">
                     <div class="col-6">
                         <h1>Lista Produtos</h1>
-
                     </div>
                     <div class="col-6">
                         <a class="btn btn-primary" href="/cadastrarProduto">inserir produto</a>
@@ -32,13 +31,12 @@
                     </thead>
                     <!-- produtos,escreve igual ao model -->
                     <tbody>
-                       <% produtos.forEach(function(produto){ %>
+                       <% produto_itens.forEach(function(produto){ %>
                             <tr>
                                 <td><%= produto.nome%></td>
                                 <td><%= produto.vlUnit%></td>
                                 <td><%= produto.codigoBarras%></td>
                             </tr>
-                            
                        <% })  %>
                     </tbody>
                 </table>
