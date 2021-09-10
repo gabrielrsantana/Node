@@ -1,0 +1,31 @@
+<%- include('../partials/header'); %>
+<div class="container mt-5 shadow rounded" style="background-color: aliceblue;">
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-5 mb-3 text-center" style="color: darkslategray;">Editando Livro</h1>
+            <!--EditarProduto mesmo nome da rota-->
+            <form action="/livros/EditarLivro" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input class="form-control" type="text" id="nome" name="nome" placeholder="nome do professor" value="<%=resultado.nome %>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Autor</label>
+                    <input class="form-control" type="text" id="email" name="autor" placeholder="email"
+                        value="<%=resultado.autor %>">
+                    <small class="text-muted">Autor da obra</small>
+                </div>
+                <div class="form-group">
+                    <label for="codBarras">codigo barras</label>
+                    <input class="form-control" type="text" id="materia" name="codigoBarras"
+                        placeholder="Materia que leciona" value="<%=resultado.codigoBarras %>">
+                </div>
+                <!-- campo escondido para ir pro form editar -->
+                <input type="hidden" name="id" value="<%=resultado._id %>">
+                <button class="btn btn-primary mb-3" type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>

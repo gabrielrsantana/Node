@@ -1,0 +1,60 @@
+<%- include('../partials/header'); %>
+    <section class="container mt-5 shadow rounded" style="background-color: aliceblue;border: grey;">
+        <div class="row">
+            <div class="col">
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <h1 class="text-center">Acervo de livros</h1>
+                    </div>
+
+                </div>
+                <!-- campo para pesquisa -->
+                <div id="toolbar" class="row">
+                    <input disabled id="pesquisa_input" class="ml-5" alta="disable" type="text" name="pesquisa">
+                    <button type="button" id="botao_pesquisa" class="btn btn-large bg-warning ml-3">Pesquisa</button>
+                    <div class="col-6">
+                        <!-- tem que colocar /professors pra acessar a rota -->
+                        <a class="btn btn-primary ml-5" href="livros/cadastrarLivros">inserir Livro</a>
+                    </div>
+                </div>
+                <!-- fim campo para pesquisa -->
+                <table id="table" class="table table-hover" data-toggle="table" data-toolbar="#toolbar"
+                    data-height="400" data-url="json/data1.json">
+                    <thead class="bg-white">
+                        <tr>
+                            <th>Livro</th>
+                            <th>Autor</th>
+                            <th colspan="4">Código Barras</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(resultado=='' ){%>
+                            <tr>
+                                <td class="bg-warning text-center" colspan="3">Sem livros cadastrados</td>
+                            </tr>
+                            <% } %>
+                                <% resultado.forEach(function(livro){ %>
+                                    <tr>
+                                        <td>
+                                            <%= livro.nome%>
+                                        </td>
+                                        <td>
+                                            <%= livro.autor%>
+                                        </td>
+                                        <td>
+                                            <%= livro.codigoBarras%>
+                                        </td>
+                                        <td style="width:5%"><a class="btn btn-danger"
+                                                onclick="return confirm('Tem certeza que quer deletar Esse livro?')"
+                                                href="/livros/deletarLivro/<%=livro._id%>">Deletar</a></td>
+                                        <td style="width:5%"><a class="btn btn-warning"
+                                                href="/livros/editarLivro/<%=livro._id%>">Editar</a></td>
+                                    </tr>
+                                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <%- include('../partials/footer'); %>
