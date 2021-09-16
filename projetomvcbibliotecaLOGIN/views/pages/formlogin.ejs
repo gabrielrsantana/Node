@@ -1,0 +1,26 @@
+<%- include('../partials/header'); %>
+<div class="container mt-5 shadow rounded" style="background-color: rgba(233, 202, 162, 0.904);">
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-5 mb-3 text-center">LOGIN do sistema</h1>
+            <h4>usuario teste :gabriel@hotmail</h4>
+            <h4>senha teste: 123456</h4>
+            <form action="/livros/loginUsuario" method="POST">
+                <div class="form-group">
+                    <label for="nome">email</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="email de cadastro">
+                    <small class="text-muted">email: gabriel@hotmail senha:123456</small>
+                </div>
+               <div class="form-group">
+                    <label for="senha">senha</label>
+                    <input class="form-control" type="text" id="senha" name="senha"
+                        placeholder="insira senha">
+               </div>
+               <!-- FORM login nao tem tipo,tratar no banco validacao de usuario -->
+                <button class="btn btn-primary mb-5" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>
