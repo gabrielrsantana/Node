@@ -1,3 +1,3 @@
-# projeto simples para Estoque de um supermercado em Node usando Mysql e arquitetura MCV ( Model View Controller).
+# alguns projetos simples em Node em cada pasta do /Node
 vai precisar instalar a pasta node_modules no projeto com os comandos de npm install
 faltando implementar editar Produto
