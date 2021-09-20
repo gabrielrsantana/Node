@@ -7,11 +7,8 @@
 var express = require("express");
 const app = express();
 // var mongoose = require("mongoose");//n usa
-const biblioteca_router = require("./routers/livros-router");
+const estoque_router = require("./routers/estoques-router");
 const port = 3000;
-
-//cloud data bank connection,se for usar mysql desabilita aqui
-//mongoose.connect("mongodb+srv://gabriel_rocha:gabriel_rocha@cluster0.uucs8.mongodb.net/biblioteca?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 //setting engine for views
 app.set("view engine", "ejs");
@@ -21,9 +18,9 @@ app.set("views", __dirname, "/views");//dirName  direto da raiz
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//listar livros
+//listar produtos do estoque
 //tem q colocar /estoques antes de algum href,como no cadastrar
-app.use("/estoques",biblioteca_router); //estoques,1 pagina que abre é '/'
+app.use("/estoques",estoque_router); //estoques,1 pagina que abre é '/'
 app.use(express.static("public")); //usar arquivos como css,js..nessa pasta
 
 app.get("/", function(req,res){

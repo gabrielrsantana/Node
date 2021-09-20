@@ -1,0 +1,41 @@
+<%- include('../partials/header'); %>
+<!-- formulario para cadastrar produtos -->
+<div class="container mt-5 shadow rounded" style="background-color:aliceblue ;">
+    <div class="row">
+        <div class="col">
+            <h1 class="mt-5 mb-3 text-center">Cadastrar produtos</h1>
+            <form action="/estoques/cadastrarProduto" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input class="form-control" type="text" id="nome" name="nome" placeholder="nome do produto">
+                </div>
+                <div class="form-group">
+                    <label for="autor">Quantidade</label>
+                    <input class="form-control" type="text" id="autor" name="quantidade" placeholder="quantidade">
+                    
+                </div>
+                <div class="form-group">
+                    <label for="preco">Preço</label>
+                    <input class="form-control" type="text" id="preco" name="preco"
+                        placeholder="preço">
+                </div>
+                <div class="form-group">
+                    <div class="form-group col-sm-6 col-md-4">
+                        <!-- ########## select onde vai os fornecedores que sao cadastrados em outro local-->
+                        <label for="inputState" style="font-size: large;font-weight: bold;">Fornecedores</label>
+                        <select name="fornecedor_id" class="selectpicker" data-width="7vw" data-live-search="true">
+                            <option value="0">escolha..</option>
+                            <% resultado.forEach(function(livro,i){ %>
+                                <option value=<%=resultado[i].id%>><%= resultado[i].nome%></option>
+                            <% }); %>
+                        </select>
+                        <!--############# fim select produtos -->
+                    </div>
+                </div>
+                <button class="btn btn-primary mb-5 mt-5" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); %>

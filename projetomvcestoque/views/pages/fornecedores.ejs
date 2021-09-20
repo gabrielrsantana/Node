@@ -1,0 +1,64 @@
+<%- include('../partials/header'); %>
+    <section class="container my-4" style="background-color: aliceblue;border: rgb(194, 189, 189);">
+        <div class="row">
+            <div class="col">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h1 class="text-center">lista de fornecedores</h1>
+                    </div>
+
+                </div>
+                <!-- campo para pesquisa -->
+                <div id="toolbar" class="row">
+                    <input disabled id="pesquisa_input" class="ml-5" alta="disable" type="text" name="pesquisa">
+                    <button type="button" id="botao_pesquisa" class="btn btn-large bg-warning ml-3">Pesquisa</button>
+                </div>
+                <!-- fim campo para pesquisa -->
+                <table id="table" class="table table-hover" data-toggle="table" data-toolbar="#toolbar"
+                    data-height="400" data-url="json/data1.json">
+                    <thead class="bg-white">
+                        <tr>
+                            <th>id</th>
+                            <th>nome</th>
+                            <th>Cnpj</th>
+                            <!-- <th colspan="1">Código Barras</th> -->
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <% if(resultado=='' ){%>
+                            <tr>
+                                <td class="bg-warning text-center" colspan="3">Sem livros cadastrados</td>
+                            </tr>
+                            <% } %>
+                                <!--1º parametro valor, 2º param indice     -->
+                                <% resultado.forEach(function(livro,i){ %>
+                                    <tr>
+                                        <td>
+                                            <%= resultado[i].id%>
+                                          </td>
+                                        <td>
+                                          <%= resultado[i].nome%>
+                                        </td>
+                                        <td>
+                                            <%=resultado[i].cnpj%>
+                                        </td>
+                                        <td style="width:5%">
+                                            <!-- DELETA SE ADMININSTRADOR -->
+                                            <% if(isAdm==true){%>
+                                            <a hidden class="btn btn-danger" onclick="return confirm('Tem certeza que quer deletar Esse fornecedor?')"  href="/estoques/deletarLivro/<%=resultado[i].cnpj%>">Deletar</a>
+                                            <% }else { %>
+                                                <!-- POINTER_EVENTS desabilita o link -->
+                                                <a hidden class="btn btn-light" style="pointer-events: none" onclick="return confirm('Tem certeza que quer deletar Esse fornecedor?')"  href="/estoques/deletarLivro/<%=resultado[i].id%>">Deletar</a>
+                                                <% } %>
+                                        </td>
+                                        <td style="width:5%">
+                                           <a hidden class="btn btn-warning" href="/estoques/editarFornecedor/<%=resultado[i].id%>">Editar</a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <%- include('../partials/footer'); %>

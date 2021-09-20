@@ -1,0 +1,70 @@
+<!-- arquivo comum a todas a paginas -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie-edge">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!--boostrap select pra live search testar 19/09/21 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <title>Lista de Produtos</title>
+  <!-- STYLES -->
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+   .navbar a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #d9e0e2;
+    
+  }
+ 
+  
+    </style>
+</head>
+<body>
+  <!-- jumbotron -->
+  <div class="jumbotron jumbotron-fluid bg-info shadow mb-0">
+    <div class="container">
+      <h1 class="display-4 text-white">Super Mercado Pereira</h1>
+      <p class="lead text-white">controle de estoque - produtos</p>
+    </div>
+  </div>
+   <!-- inserir header com MENU aqui -->
+   <!--############## barra de navegacao  #############  -->
+    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg nav-fill w-100 navbar-light text-white mt-0 rounded-3" style="background-image: linear-gradient(to right,rgba(31, 133, 197, 0.808rgba(16, 155, 197, 0.876)6),rgba(210, 223, 231, 0.4))">
+      <a class="navbar-brand font-weight-bold text-black" href="/">Inicio</a>
+      <!-- nao implementado cadastrar cliente -->
+      <a class="navbar-brand font-weight-bold text-black" href="#">Cadastrar Cliente</a>
+      <!-- nao implementado cadastrar fornecedores -->
+      <a class="navbar-brand font-weight-bold text-black" href="#">Cadastrar Fornecedores| </a>
+      <a class="navbar-brand font-weight-bold text-black" href="/estoques/fornecedores">Fornecedores</a>
+      <a class="navbar-brand font-weight-bold text-black" href="/estoques/vendas">vender</a>
+      <a class="navbar-brand font-weight-bold text-black" href="/estoques/vendidos">vendidos</a>
+      <a class="navbar-brand font-weight-bold text-black" href="/estoques/cadastrarProduto">Cadastrar produto</a>
+      <a class="navbar-brand font-weight-bold text-black" href="/estoques/">Listar produtos</a>
+    </nav>
+  </div>
+     
+   <!-- ############### FIM BARRA DE NAVEGACAO ############################-->

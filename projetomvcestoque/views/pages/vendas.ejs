@@ -1,0 +1,44 @@
+<%- include('../partials/header'); %>
+  <!-- inicio form vendas ,carrega os dados de produtos e clientes para vender-->
+    <section class="container mt-5 shadow rounded" style="background-color: aliceblue;border: grey;">
+        <h1 class="display-6">Realizar venda</h1>
+        <div class="row">
+           <form class="form mx-3 box-shadow" action="/estoques/vendas" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-sm-6 col-md-4">
+                        <!-- ########## select onde vai os produtos -->
+                        <label for="inputState" style="font-size: large;font-weight: bold;">Produto</label>
+                        <select name="produto_id" class="selectpicker" data-width="7vw" data-live-search="true">
+                            <option value="0">escolha..</option>
+                            <% resultado.forEach(function(livro,i){ %>
+                                <option value=<%=resultado[i].id%>><%= resultado[i].nome%></option>
+                            <% }); %>
+                        </select>
+                        <!--############# fim select produtos -->
+                    </div>
+                    <!--####### quantidade  -->
+                    <div class="form-group col-sm-6 col-md-4 d-flex">
+                        <label for="quantidade" style="font-size: large;font-weight: bold;">Quantidade</label>
+                        <input required type="number"  class="form-control ml-3" id="quantidade" name="quantidade"
+                            placeholder="insira">
+                    </div>
+                    <!-- ###### select dos clientes cadastrados-->
+                    <div class="form-group col-sm-6 col-md-4">
+                    <label for="quantidade" style="font-size: large;font-weight: bold;">cliente</label>    
+                    <!-- https://developer.snapappointments.com/bootstrap-select/ -->
+                    <!-- manual diz q tem q usar data-tokens="ketchup",mas procura sem -->
+                    <select class="selectpicker" data-width="10vw" data-live-search="true" name="cliente_id">
+                        <option value="0">escolha..</option>
+                        <% clientes_array.forEach(function(livro,i){ %>
+                            <option value=<%=resultado[i].id%>><%= clientes_array[i].nome%></option>
+                        <% }); %>
+                    </select>
+                    </div>  
+                   <!-- ####### fim select dos clientes -->
+                </div><!-- row-->
+                <button type="submit" class="btn btn-primary my-5 float-right">Enviar venda</button> 
+           </form>
+            <!-- fim form vendas -->
+        </div>
+    </section>
+    <%- include('../partials/footer'); %>

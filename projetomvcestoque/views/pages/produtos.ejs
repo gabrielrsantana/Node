@@ -1,0 +1,69 @@
+<%- include('../partials/header'); %>
+    <section class="container mb-5 mt-5" style="background-color: aliceblue;border: rgb(194, 189, 189);">
+        <div class="row mb-3">
+            <div class="col mb-5">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h1 class="text-center">lista de produtos</h1>
+                    </div>
+
+                </div>
+                <!-- campo para pesquisa -->
+                <div id="toolbar" class="row">
+                    <input disabled id="pesquisa_input" class="ml-5" alta="disable" type="text" name="pesquisa">
+                    <button type="button" id="botao_pesquisa" class="btn btn-large bg-warning ml-3">Pesquisa</button>
+                </div>
+                <!-- fim campo para pesquisa -->
+                <table id="table" class="table table-hover box-shadow" data-toggle="table" data-toolbar="#toolbar"
+                    data-height="400" data-url="json/data1.json">
+                    <thead class="bg-white">
+                        <tr>
+                            <th>id</th>
+                            <th>descrição</th>
+                            <th>quantidade</th>
+                            <th>preco/kg</th>
+                            <!-- <th colspan="1">Código Barras</th> -->
+                            <%=resultado.size %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(resultado=='' ){%>
+                            <tr>
+                                <td class="bg-warning text-center" colspan="3">Sem livros cadastrados</td>
+                            </tr>
+                            <% } %>
+                                <!--1º parametro valor, 2º param indice     -->
+                                <% resultado.forEach(function(livro,i){ %>
+                                    <tr>
+                                        <td>
+                                            <%= resultado[i].id%>
+                                          </td>
+                                        <td>
+                                          <%= resultado[i].nome%>
+                                        </td>
+                                        <td>
+                                            <%=resultado[i].quantidade%>
+                                        </td>
+                                        <td>
+                                            <%=resultado[i].preco%>
+                                        </td>
+                                        <td style="width:5%">
+                                            <!-- DELETA SE ADMININSTRADOR -->
+                                            <% if(isAdm==true){%>
+                                            <a class="btn btn-danger" onclick="return confirm('Tem certeza que quer deletar Esse livro?')"  href="/estoques/deletarProduto/<%= resultado[i].id%>">Deletar</a>
+                                            <% }else { %>
+                                                <!-- POINTER_EVENTS desabilita o link -->
+                                                <a class="btn btn-light" style="pointer-events: none" onclick="return confirm('Tem certeza que quer deletar Esse Produto?')"  href="/estoques/deletarProduto/<%=resultado[i].id%>">Deletar</a>
+                                                <% } %>
+                                        </td>
+                                        <td style="width:5%">
+                                           <a class="btn btn-secondary" href="/estoques/editarProduto/<%=resultado[i].id%>">Editar</a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <%- include('../partials/footer'); %>
