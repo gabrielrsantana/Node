@@ -1,3 +1,11 @@
 
 gabriel rocha santana 
 projeto simples para Estoque de um supermercado em Node usando Mysql e arquitetura MCV ( Model View Controller).
+
+tem que cadastrar os modulos node_modules  com npm install
+tem que ter essas dependencias 
+"dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+     "mysql": "^2.18.1"
+  }
