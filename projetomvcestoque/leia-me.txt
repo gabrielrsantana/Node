@@ -1,0 +1,3 @@
+
+gabriel rocha santana 
+projeto simples para Estoque de um supermercado em Node usando Mysql e arquitetura MCV ( Model View Controller).
