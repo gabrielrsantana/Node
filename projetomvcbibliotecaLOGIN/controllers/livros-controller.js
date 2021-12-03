@@ -1,4 +1,4 @@
-//importando o modelo do banco
+//importando o modelo do banco de dados para poder ser feito as alterações
 const livro_bd = require("../models/livros-model");
 const usuario_bd = require("../models/usuarios-model");
 var isAdm = false;  //para controle do delete,tem que ser visto globalmente
