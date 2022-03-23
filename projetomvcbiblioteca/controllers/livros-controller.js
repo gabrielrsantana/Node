@@ -10,7 +10,7 @@ exports.listar_livros = (req, res) => {
     });
 };//listar_lisvros
 
-//implementar pagina inicial
+//#### implementar pagina inicial ######
 // exports.pagina_principal = (req,res)=>{
 //     res.render("..views/pages/home");
 // }
