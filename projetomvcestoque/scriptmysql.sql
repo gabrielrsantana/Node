@@ -1,5 +1,6 @@
 USE supermercado;
 
+
 DROP TABLE vendas; 
 DROP TABLE produtos;
 DROP TABLE clientes;
